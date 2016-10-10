@@ -13,7 +13,7 @@ class GamesController < ApplicationController
     @game.save
     @game.players.new(user_id: current_user.id, game_id: @game.id)
     @game.save
-    redirect_to @game
+    redirect_to "/games"
   end
 
   def show

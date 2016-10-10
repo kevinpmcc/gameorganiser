@@ -1,16 +1,22 @@
-<h1>Listing games</h1>
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Time</th>
-  </tr>
- 
+
+    <div class="row">
   <% @games.each do |game| %>
-    <tr>
-      <td><%= game.title %></td>
-      <td><%= game.time %></td>
-      <td><%= link_to 'Show', game_path(game) %></td>
-    </tr>
+      <div class="col-sm-4">
+        <span class="card" style="width: 18rem;">
+          <h3 class ="card-header"><%= game.title %></h3>
+          <div class="card-block" >
+            <h5 class="card-title"><%= game.time %></h5>
+            <p class="card-text"><p><% game.players.each do |player|%>
+            <%= player.user.email + " " %>
+          <% end %>
+            </p>
+            <%= form_for :game, url: game_path(game), method: :patch do |f| %>
+              <%= f.submit 'Add me' %>
+            <% end %>
+
+          </div>
+        </span>
+      </div>
   <% end %>
-</table>
+    </div>
+<%= link_to 'New Game', new_game_path %>

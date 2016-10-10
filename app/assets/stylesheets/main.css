@@ -1,0 +1,6 @@
+.container {
+     padding-right: 15px; /*15px in bootstrap.css*/
+     padding-left: 15px;  /*idem*/
+     margin-right: auto;
+     margin-left: auto;
+}

@@ -28,7 +28,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.players.new(user_id: current_user.id, game_id: @game.id)
     @game.save
-    redirect_to "/games/#{@game.id}"
+    redirect_to "/games"
   end
 
   private

@@ -7,7 +7,7 @@
           <div class="card-block" >
             <h5 class="card-title"><%= game.time %></h5>
             <p class="card-text"><p><% game.players.each do |player|%>
-            <%= player.user.email + " " %>
+            <%= player.user.name + " " %>
           <% end %>
             </p>
             <%= form_for :game, url: game_path(game), method: :patch do |f| %>

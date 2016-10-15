@@ -5,11 +5,18 @@ class GamesController < ApplicationController
   end
 
   def index
+    @boardgames = Boardgame.all
     @games = Game.all
   end
 
+  def new
+    @boardgames = Boardgame.all
+  end
+
   def create
-    @game = Game.new(game_params)
+    puts params
+    boardgame = Boardgame.find(game_params[:boardgame_id])
+    @game = boardgame.games.create(game_params)
     @game.save
     @game.players.new(user_id: current_user.id, game_id: @game.id)
     @game.save
@@ -33,6 +40,6 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:title, :time)
+    params.require(:game).permit(:time, :boardgame_id)
   end
 end

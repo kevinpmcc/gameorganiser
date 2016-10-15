@@ -1,22 +1,22 @@
 
-    <div class="row">
+<div class="row">
   <% @games.each do |game| %>
-      <div class="col-sm-4">
-        <span class="card" style="width: 18rem;">
-          <h3 class ="card-header"><%= game.title %></h3>
-          <div class="card-block" >
-            <h5 class="card-title"><%= game.time %></h5>
-            <p class="card-text"><p><% game.players.each do |player|%>
-            <%= player.user.name + " " %>
+    <div class="col-sm-4">
+      <span class="card" style="width: 18rem;">
+        <div class="card-block" >
+          <h3 class ="card-header"><%= @boardgames.find(game.boardgame_id).title %></h3>
+          <h5 class="card-title"><%= game.time %></h5>
+          <p class="card-text"><p><% game.players.each do |player|%>
+          <%= player.user.name + " " %>
+        <% end %>
+          </p>
+          <%= form_for :game, url: game_path(game), method: :patch do |f| %>
+            <%= f.submit 'Add me' %>
           <% end %>
-            </p>
-            <%= form_for :game, url: game_path(game), method: :patch do |f| %>
-              <%= f.submit 'Add me' %>
-            <% end %>
 
-          </div>
-        </span>
-      </div>
-  <% end %>
+        </div>
+      </span>
     </div>
+  <% end %>
+</div>
 <%= link_to 'New Game', new_game_path %>

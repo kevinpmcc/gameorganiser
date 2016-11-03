@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :games
+  resources :boardgames
 
   root 'games#index'
 

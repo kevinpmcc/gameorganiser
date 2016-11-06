@@ -1,13 +1,11 @@
 <h1>New Game</h1>
 
-<%= form_for :game, url: games_path do |f| %>
+<%= simple_form_for :game, url: games_path do |f| %>
 <p>
  <%= f.select :boardgame_id, options_from_collection_for_select(@boardgames, 'id', 'title'), {prompt: true}, {required: true}  %>
   </p>
   <p>
-    
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
+    <%= f.input :time, :as => :datetime_picker %>
   </p>
   <%= f.submit :submit %>
 <% end %> 

@@ -1,0 +1,11 @@
+
+<h1>New Boardgame</h1>
+
+<%= form_for :game, url: boardgames_path do |f| %>
+  <p>
+    
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <%= f.submit :submit %>
+<% end %> 

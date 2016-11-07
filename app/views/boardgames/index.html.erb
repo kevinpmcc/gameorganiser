@@ -1,0 +1,17 @@
+
+<div class="row">
+  <% @boardgames.each do |boardgame| %>
+    <div class="col-sm-4">
+      <span class="card" style="width: 18rem;">
+        <div class="card-block" >
+          <h3 class ="card-header"><%= @boardgames.title %></h3>
+          <%= form_for :boardgame, url: boardgame_path(boardgame), method: :delete do |f| %>
+            <%= f.submit 'Delete Me' %>
+          <% end %>
+
+        </div>
+      </span>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'New Game', new_game_path %>

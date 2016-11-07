@@ -22,7 +22,7 @@ gem 'simple_form'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'rails_admin', '~> 1.0'
+gem 'rails_admin', :github => 'sferik/rails_admin'
 gem 'devise'
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
 

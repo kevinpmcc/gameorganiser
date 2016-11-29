@@ -7,7 +7,7 @@
           <h3 class ="card-header"><%= @boardgames.find(game.boardgame_id).title %></h3>
           <h5 class="card-title"><%= game.time.to_formatted_s(:short) %></h5>
           <p class="card-text"><p><% game.players.each do |player|%>
-          <%= player.user.name + " " %>
+          <%= player.user.name  %> <br>
         <% end %>
           </p>
           <%= form_for :game, url: game_path(game), method: :patch do |f| %>

@@ -5,7 +5,7 @@
       <span class="card" style="width: 18rem;">
         <div class="card-block" >
           <h3 class ="card-header"><%= @boardgames.find(game.boardgame_id).title %></h3>
-          <h5 class="card-title"><%= game.time %></h5>
+          <h5 class="card-title"><%= game.time.to_formatted_s(:short) %></h5>
           <p class="card-text"><p><% game.players.each do |player|%>
           <%= player.user.name + " " %>
         <% end %>

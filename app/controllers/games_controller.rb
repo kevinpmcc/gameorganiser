@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   end
 
   def new
-    @boardgames = Boardgame.all
+    @boardgames = Boardgame.order('boardgames.title').all
   end
 
   def create

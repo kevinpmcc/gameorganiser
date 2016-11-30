@@ -10,8 +10,14 @@
           <%= player.user.name  %> <br>
         <% end %>
           </p>
-          <%= form_for :game, url: game_path(game), method: :patch do |f| %>
-            <%= f.submit 'Add me' %>
+          <% if user_signed_in? && game.players.any? { |player| player.user_id == current_user.id }  %>
+            <%= form_for([game, game.players.find_by(game_id: game.id, user_id: current_user.id)], method: 'delete') do |f| %>
+              <%= f.submit 'Remove me' %>
+            <% end %>
+          <% else %>
+            <%= form_for :game, url: game_path(game), method: :patch do |f| %>
+              <%= f.submit 'Add me' %>
+            <% end %>
           <% end %>
 
         </div>

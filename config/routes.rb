@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  resources :games
+  resources :games do
+    resources :players
+  end
   resources :boardgames
 
   root 'games#index'

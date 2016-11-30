@@ -40,6 +40,21 @@ feature "Signing in" do
 
     expect(page).to_not have_content 'Tester1'
   end
+
+  scenario 'Game has been added' do
+    user = User.create! ({ name: 'Chris', email: 'chris@chris.com', password: 'password' })
+    boardgame = Boardgame.create! ({ title: 'Go' })
+    game = boardgame.games.create({time: DateTime.now, boardgame_id: boardgame.id})
+    game.players.new(user_id: user.id, game_id: game.id)
+    game.save
+
+    visit '/'
+
+    click_button('Add me')
+
+    expect(page).to have_button('Log in')
+    expect(page).to have_content('Forgot your password?')
+  end
 end
 
 

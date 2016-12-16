@@ -41,12 +41,16 @@ Boardgame.create! ({ title: 'Coup: The Resistance' })
 Boardgame.create! ({ title: 'The Ravens of Thri Sahashri' })
 Boardgame.create! ({ title: 'Discworld: Ankh-Morpork' })
 
-game1 = boardgame1.games.create({time: DateTime.now, boardgame_id: boardgame1.id})
+available_times = ['14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00']
+
+available_times.each { |time| AvailableTime.create! ({ avail_time: time }) }
+
+game1 = boardgame1.games.create({start_time: available_times[0], boardgame_id: boardgame1.id})
 game1.players.new(user_id: user1.id, game_id: game1.id)
 game1.players.new(user_id: user2.id, game_id: game1.id)
 game1.save
 
-game2 = boardgame2.games.create({time: DateTime.now, boardgame_id: boardgame2.id})
+game2 = boardgame2.games.create({start_time: available_times[9], boardgame_id: boardgame2.id})
 game2.players.new(user_id: user3.id, game_id: game2.id)
 game2.players.new(user_id: user4.id, game_id: game2.id)
 game2.players.new(user_id: user5.id, game_id: game2.id)

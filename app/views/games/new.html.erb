@@ -2,10 +2,14 @@
 
 <%= simple_form_for :game, url: games_path do |f| %>
 <p>
+Boardgame:
  <%= f.select :boardgame_id, options_from_collection_for_select(@boardgames, 'id', 'title'), {prompt: true}, {required: true}  %>
   </p>
+
   <p>
-    <%= f.input :time, :as => :datetime_picker %>
+Time:
+
+ <%= f.select :start_time, options_from_collection_for_select(@available_times, 'avail_time', 'avail_time'), {prompt: true}, {required: true}  %>
   </p>
   <%= f.submit :submit %>
 <% end %> 

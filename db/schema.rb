@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129125807) do
+ActiveRecord::Schema.define(version: 20161216114132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "available_times", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "avail_time"
+  end
 
   create_table "boardgames", force: :cascade do |t|
     t.string   "title"
@@ -26,7 +32,7 @@ ActiveRecord::Schema.define(version: 20161129125807) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "boardgame_id"
-    t.datetime "time"
+    t.string   "start_time"
   end
 
   add_index "games", ["boardgame_id"], name: "index_games_on_boardgame_id", using: :btree

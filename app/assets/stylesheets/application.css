@@ -16,3 +16,7 @@
  *= require bootstrap-datetimepicker
  *= require jquery.timepicker.css
  */
+
+body {
+  background-color: #DD8585;
+}
